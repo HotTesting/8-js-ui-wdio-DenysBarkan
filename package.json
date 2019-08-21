@@ -9,7 +9,7 @@
     "type": "git",
     "url": "git+https://github.com/StartITProtractorJS/8-js-ui-wdio.git"
   },
-  "author": "Oleksandr Khotemskyi <xotabu4@gmail.com>",
+  "author": "Denys Barkanov <denys.barkan@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/StartITProtractorJS/8-js-ui-wdio/issues"
@@ -23,5 +23,9 @@
     "@wdio/sync": "^5.12.3",
     "chromedriver": "^76.0.0",
     "wdio-chromedriver-service": "^5.0.2"
+  },
+  "main": "wdio.conf.js",
+  "directories": {
+    "test": "test"
   }
 }
