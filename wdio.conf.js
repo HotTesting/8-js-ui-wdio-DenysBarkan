@@ -26,7 +26,7 @@ exports.config = {
 
     bail: 0,
 
-    baseUrl: 'http://ip-5236.sunline.net.ua:38015/',
+    baseUrl: 'http://ip-5236.sunline.net.ua:38015',
 
     waitforTimeout: 10000,
 
@@ -44,6 +44,7 @@ exports.config = {
         ui: 'bdd',
         timeout: 60000
     },
+
     // =====
     // Hooks
     // =====
