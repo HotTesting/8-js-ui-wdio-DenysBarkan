@@ -2,7 +2,7 @@
   "mainPage":{
     "url": "http://ip-5236.sunline.net.ua:38015/",
     "favicon": "shortcut",
-    "logo": ".logotype",
+    "logo": "img[src=\"http://ip-5236.sunline.net.ua:38015/images/logotype.png\"]",
     "cart" : "#cart",
     "cartDetails" : "#cart .details",
     "mainMenu": "#default-menu.collapse",
