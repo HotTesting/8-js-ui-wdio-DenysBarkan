@@ -1,6 +1,13 @@
 {
   "mainPage":{
     "url": "http://ip-5236.sunline.net.ua:38015/",
-    "header": ""
+    "favicon": "shortcut",
+    "logo": ".logotype",
+    "cart" : "#cart",
+    "cartDetails" : "#cart .details",
+    "mainMenu": "#default-menu.collapse",
+    "sliders": "#box-slides"
+
+
   }
 }
