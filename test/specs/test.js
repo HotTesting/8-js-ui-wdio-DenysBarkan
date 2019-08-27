@@ -30,6 +30,13 @@ describe('Website', function () {
     it("corp logo", function () {
         let corp = $("li img");
        assert.exists(corp, "the corp logo is not shown");
+    });
+    it("home btn", function () {
+        let hb = $(".hidden-xs > a");
+        let ttl = (hb.getText());
+        let href = hb.getHTML();
+        //assert.equal(ttl, "Home");
+        assert.equal(href, "http://ip-5236.sunline.net.ua:38015/");
     })
 
 })
