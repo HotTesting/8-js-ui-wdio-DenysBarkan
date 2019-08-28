@@ -40,14 +40,26 @@ describe('Website', function () {
     it("categories dropdown", function () {
         let drdwn = $(".categories.dropdown");
         let name = drdwn.getText();
+        console.log("name: " + name);
         assert.equal(name, "Categories", "The Title of dropdown list is incorrect");
-        $(".categories.dropdown > .dropdown-toggle").click();
-        let drmn = $(".categories > .dropdown-menu a");
-        console.log("drmn" + drmn);
-        let drList = $(drmn).getText();
-        let drLink = $(drmn).getAttribute("href");
-        assert.isTrue(drList);
-        assert.equal(drLink, "http://ip-5236.sunline.net.ua:38015/rubber-ducks-c-1/");
+        $(".categories .caret").click();
+        //browser.pause(3000);
+        let drmn = $(".categories > .dropdown-menu").isDisplayed();
+        assert.isTrue(drmn);
+    });
+    it("Manufactures dropdown", function () {
+        let drdwn = $(".manufacturers.dropdown");
+        let name = drdwn.getText();
+        console.log("name: " + name);
+        assert.equal(name, "Manufacturers", "The Title of dropdown list is incorrect");
+        $(".manufacturers .caret").click();
+        browser.pause(3000);
+        let drmn = $(".manufacturers > .dropdown-menu").isDisplayed();
+        assert.isTrue(drmn);
+    });
+    it("Navigation Bar right", ()=>{
+        let nbr = $(".navbar-right");
+
     })
 
 })
