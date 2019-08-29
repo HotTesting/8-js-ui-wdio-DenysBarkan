@@ -24,8 +24,14 @@ describe('HEADER', function () {
     });
 
     it("Search field", ()=>{
-        let srch = $(".navbar-header .navbar-form");
-
+        let srch = $(".navbar-header .navbar-form .form-control");
+        assert.equal(srch.getAttribute("placeholder"), "Search products …");
+        $(".navbar-header input.form-control").setValue("SomeValue");
+        browser.keys("\uE007");
+        assert.include($("#box-search-results").getText(), "SomeValue");
+        //browser.pause(3000);
+        browser.back();
+        browser.pause(3000);
     })
 
     it("box slide", function () {
