@@ -2,25 +2,62 @@ const {assert} = require('chai');
 
 describe('HEADER', function () {
 
-    it('should be alive', function () {
-        browser.url('/');
-        const img = $('img[src="http://ip-5236.sunline.net.ua:38015/images/logotype.png"]');
-        assert.exists(img, 'Website should be opened, and logo displayed');
-        //browser.pause(3000);
-    });
-
-    it('title', function () {
-        let title = browser.getTitle();
+    it('title&FavIcon', function () {
+        browser.url(`/`);
+        const title = browser.getTitle();
         assert.equal(title, "Ducks Store | Online Store", "The Title is wrong");
+        const favIcon = $('link[href=\"/favicon.ico\"]');
+        assert.exists(favIcon, 'Favicon is not shown');
     });
+    it('header', ()=>{
+        const header = $('#header');
+        const logoImg = header.$('img[src="http://ip-5236.sunline.net.ua:38015/images/logotype.png"]');
+        assert.isTrue(logoImg.isDisplayed(), "The Logo img is not shown");
+        const logoHref = header.$(' .logotype').getAttribute('href');
+        assert.equal(logoHref, 'http://ip-5236.sunline.net.ua:38015/', 'The logo link is not exist');
+        const logoTitle = header.$(' .logotype img').getAttribute('title');
+        console.log('the logo title we have got ', logoTitle);
+        assert.equal(logoTitle, 'Ducks Store', 'The logo title is wrong');
 
-    it('cart', function () {
-        let cart = $('#cart');
-        let cartTitle = $(".details > .title").getText();
-        let cartImg = $(".image:nth-child(2)");
-        assert.exists(cart, "cart is not exist");
-        assert.exists(cartImg, "Cart hasn't the image");
+        const changePref = header.$(' .change a');
+        changePref.click();
+        browser.pause(2000);
+
+        //const regionForm = header.$('#region');
+
+        const regionalSettingsOverlay = $('form[name="region_form"]');
+        assert.isTrue(regionalSettingsOverlay.isDisplayed(), "The region change form is not displayed");
+        let countrySelect = regionalSettingsOverlay.$(' .select-wrapper select[name="country_code"]');
+        countrySelect.selectByVisibleText('Ukraine');
+        let currencySelect = regionalSettingsOverlay.$(' .select-wrapper select[name="currency_code"]');
+        currencySelect.selectByVisibleText('Euros');
+        //const provinceSelect = regionalSettingsOverlay.$('.select-wrapper select[name="zone_code"]');
+        const saveBtn = regionalSettingsOverlay.$('button[name="save"]');
+        browser.pause(3000);
+        saveBtn.click();
+
+        const langId = header.$(' .language').getText();
+        assert.equal(langId, 'English', 'The language is incorrect');
+        let currencyId = header.$(' .currency').getText();
+        assert.equal(currencyId, 'EUR', 'The currency is incorrect');
+        let countryId = header.$(' .country img').getAttribute('title');
+        assert.equal(countryId, 'Ukraine');
+
+        changePref.click();
+        countrySelect.selectByVisibleText('United States');
+        currencySelect.selectByVisibleText('US Dollars');
+        saveBtn.click();
+        currencyId = header.$(' .currency').getText();
+        countryId = header.$(' .country img').getAttribute('title');
+        assert.equal(currencyId, 'USD', 'The currency is incorrect');
+        assert.equal(countryId, 'United States');
+
+        const cart = header.$('#cart');
+        const cartTitle = cart.$(' .title').getText();
+        const cartImg = cart.$(' .image');
+        assert.isTrue(cartImg.isDisplayed(),"Cart hasn't the image");
         assert.equal(cartTitle, "Shopping Cart", "The Title is not correct");
+
     });
 
     it("Search field", ()=>{
@@ -31,8 +68,8 @@ describe('HEADER', function () {
         assert.include($("#box-search-results").getText(), "SomeValue");
         //browser.pause(3000);
         browser.back();
-        browser.pause(3000);
-    })
+        //browser.pause(3000);
+    });
 
     it("box slide", function () {
         let slide = $("#box-slides > carousel-inner > item");
@@ -49,15 +86,15 @@ describe('HEADER', function () {
         let ttl = hb.getAttribute("title");
         let href = hb.getAttribute("href");
         assert.equal(ttl, "Home");
-        console.log(ttl);
+       // console.log(ttl);
         assert.equal(href, "http://ip-5236.sunline.net.ua:38015/");
-        console.log(href);
+        //console.log(href);
     });
 
     it("categories dropdown", function () {
         let drdwn = $(".categories.dropdown");
         let name = drdwn.getText();
-        console.log("name: " + name);
+        //console.log("name: " + name);
         assert.equal(name, "Categories", "The Title of dropdown list is incorrect");
         $(".categories .caret").click();
         //browser.pause(3000);
