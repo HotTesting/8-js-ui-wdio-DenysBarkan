@@ -82,8 +82,9 @@ describe("Search results sorting", function() {
 });
 
 // BONUS LEVEL - this test gives you 15 points
-// describe("Contact us form", function() {
-//     it("must send messages to shop administration", function() {
-//         throw new Error("NOT IMPLEMENTED");
-//     });
-// });
+describe("Contact us form", function() {
+    it("must send messages to shop administration", function() {
+        browser.url(`/customer-service-s-0`);
+
+    });
+});
