@@ -53,10 +53,9 @@ describe("Search results sorting", function() {
             let pr = products[p].getAttribute('data-price');
             newProd.push(pr);
         }
-        console.log('by price ', newProd);
+        //console.log('by price ', newProd);
         assert.isTrue(Math.min(...newProd) == newProd[0], "The first product is not a lowest price");
         assert.isTrue(Math.max(...newProd) == newProd[newProd.length-1], "The last product is not the expensive");
-
 
     });
 
@@ -76,8 +75,9 @@ describe("Search results sorting", function() {
             let pr = products[p].getAttribute('data-name');
             newProd.push(pr);
         }
-        console.log('by name ', newProd);
 
+        assert.isTrue(newProd[0][0] < newProd[1][0], "the first item is not the first by alphabet");
+        assert.isTrue(newProd[newProd.length-1][0] > newProd[newProd.length-2][0], "the last one item is not the last one");
     });
 });
 
