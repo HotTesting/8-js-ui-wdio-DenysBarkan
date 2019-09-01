@@ -120,4 +120,4 @@ describe('HEADER', function () {
         browser.back();
     });
 
-})
+});

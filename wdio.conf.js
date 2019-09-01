@@ -5,8 +5,10 @@ exports.config = {
     path: '/',
 
     specs: [
-        './test/specs/homepage.js',
+        //'./test/specs/homepage.js',
         //'./test/specs/smoke.js',
+        //'./test/specs/registration.js',
+        './test/specs/homeWork3.js',
         //'./test/specs/registration.js',
         //'./test/specs/**/*.js'
     ],
