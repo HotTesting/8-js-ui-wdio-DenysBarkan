@@ -85,6 +85,24 @@ describe("Search results sorting", function() {
 describe("Contact us form", function() {
     it("must send messages to shop administration", function() {
         browser.url(`/customer-service-s-0`);
-
+        const contactUsForm = $('#box-contact-us form[name="contact_form"] ');
+        const name = contactUsForm.$('input[name="name"]');
+        name.setValue(`TestName${new Date().getDay()}`);
+        const emailInput = contactUsForm.$('input[name="email"]');
+        const email = (`test${new Date().getTime() / 1000}@test.com`);
+        emailInput.setValue(email);
+        const subject = contactUsForm.$('input[name="subject"]');
+        subject.setValue("Testing message");
+        const textArea = contactUsForm.$('textarea[name="message"]');
+        textArea.setValue("The testing message should be delivered onto the Customer Service office");
+        textArea.addValue("Signature");
+        browser.pause(2000);
+        const sendBtn = contactUsForm.$('button[name="send"]');
+        sendBtn.click();
+        browser.pause(3000);
+        const successAlert = $('#content #notices .alert-success');
+        assert(successAlert.isDisplayed(), 'The alert of the message delivery should be shown');
+        const successMessage = successAlert.getText();
+        assert.include(successMessage, "Your email has successfully been sent", "The alert is not shown");
     });
 });
