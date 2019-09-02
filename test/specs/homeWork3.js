@@ -87,15 +87,15 @@ describe("Contact us form", function() {
         browser.url(`/customer-service-s-0`);
         const contactUsForm = $('#box-contact-us form[name="contact_form"] ');
         const name = contactUsForm.$('input[name="name"]');
-        name.setValue(`TestName${new Date().getDay()}`);
+        name.setValue('TestName');
         const emailInput = contactUsForm.$('input[name="email"]');
         const email = (`test${new Date().getTime() / 1000}@test.com`);
         emailInput.setValue(email);
         const subject = contactUsForm.$('input[name="subject"]');
         subject.setValue("Testing message");
         const textArea = contactUsForm.$('textarea[name="message"]');
-        textArea.setValue("The testing message should be delivered onto the Customer Service office");
-        textArea.addValue("Signature");
+        textArea.setValue("The testing message should be delivered onto the Customer Service office ");
+        textArea.addValue(" Signature");
         browser.pause(2000);
         const sendBtn = contactUsForm.$('button[name="send"]');
         sendBtn.click();
