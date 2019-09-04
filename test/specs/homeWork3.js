@@ -61,14 +61,17 @@ describe("Search results sorting", function() {
 
     it("correctly arranges items when using 'by name' sorting", function() {
         browser.url(`/search?query=Duck`)
-        const btnLine = $$('#content .btn-group a.btn');
-        for (let i = 0 ; i < btnLine.length; i++){
-            let btnName = btnLine[i].getText();
-            if(btnName.includes('Name')){
-                btnLine[i].click();
-                //browser.pause(3000);
-            }
-        }
+        // const btnLine = $$('#content .btn-group a.btn');
+        // for (let i = 0 ; i < btnLine.length; i++){
+        //     let btnName = btnLine[i].getText();
+        //     if(btnName.includes('Name')){
+        //         btnLine[i].click();
+        //         //browser.pause(3000);
+        //     }
+        // }
+        const btnLine = $('a[href*="sort=name"]');
+        btnLine.click();
+        
         const products = $$('#content .products .product');
         let newProd = [];
         for (let p = 0 ; p < products.length; p++){
