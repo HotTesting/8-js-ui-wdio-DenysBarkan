@@ -50,7 +50,7 @@ describe("Search results sorting", function() {
         // }
         const priceBtn = btnLine.$('a[href*="sort=price"]'); //use the shorter locator, don't use the loop for
         priceBtn.click();                                    // the functionality is the same as code on 44-48 lines
-
+        
         const products = $$('#content .products .product');
         let newProd = [];
         for (let p = 0 ; p < products.length; p++){
