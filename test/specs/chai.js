@@ -15,7 +15,7 @@ describe("Chai ", function() {
         expect($("div").isDisplayed()).to.equal(true, 'hello message')
     });
 
-    it("expect", function() {
+    it("assert", function() {
         browser.url();
         assert.isTrue($("div").isDisplayed(), 'hello world')
     });

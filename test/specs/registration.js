@@ -1,4 +1,5 @@
-const {assert} = require('chai');
+const {assert} = require('chai');    // opened for .js
+//import * as assert from 'chai';   // opened for .ts
 
 describe('User Registration', function () {
     it('can register on website', function () {
@@ -21,10 +22,6 @@ describe('User Registration', function () {
         confirmPasswordInput.setValue(email);
         const createAccountButton = registrationForm.$('button[name="create_account"]');
         createAccountButton.click();
-        // browser.pause(120000)
-
-        // '#notices .alert-success'
-        // 'Your customer account has been created.'
 
         const successMessage = $('#notices .alert-success');
         assert(successMessage.isDisplayed(), 'User registered success message should be visible');

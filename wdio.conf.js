@@ -9,10 +9,10 @@ exports.config = {
 
     specs: [
         //'./test/specs/homepage.js',
-        //'./test/specs/smoke.js',
+        './test/specs/smoke.ts',
         //'./test/specs/registration.js',
         //'./test/specs/homeWork3.js',
-        './test/specs/mocha_hooks.js',
+        //'./test/specs/mocha_hooks.js',
         //'./test/specs/**/*.js'
     ],
 
