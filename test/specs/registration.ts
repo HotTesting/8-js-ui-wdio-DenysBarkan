@@ -1,4 +1,4 @@
-const {assert} = require('chai');
+const assert = require('chai');
 
 describe('User Registration', function () {
     it('can register on website', function () {
