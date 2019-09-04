@@ -1,3 +1,6 @@
+require('ts-node').register({ files: true });
+
+
 exports.config = {
 
     runner: 'local',
@@ -8,8 +11,8 @@ exports.config = {
         //'./test/specs/homepage.js',
         //'./test/specs/smoke.js',
         //'./test/specs/registration.js',
-        './test/specs/homeWork3.js',
-        //'./test/specs/registration.js',
+        //'./test/specs/homeWork3.js',
+        './test/specs/mocha_hooks.js',
         //'./test/specs/**/*.js'
     ],
 
