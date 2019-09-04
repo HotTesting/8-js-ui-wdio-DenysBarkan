@@ -103,7 +103,7 @@ describe("Contact us form", function() {
         //browser.pause(2000);
         const sendBtn = contactUsForm.$('button[name="send"]');
         sendBtn.click();
-        browser.pause(3000);
+        //browser.pause(3000);
         const successAlert = $('#content #notices .alert-success');
         assert(successAlert.isDisplayed(), 'The alert of the message delivery should be shown');
         const successMessage = successAlert.getText();
