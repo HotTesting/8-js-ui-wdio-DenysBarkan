@@ -1,4 +1,5 @@
-const {assert} = require('chai');
+//const {assert} = require('chai');
+import {assert} from "chai";
 
 describe('HEADER', function () {
 

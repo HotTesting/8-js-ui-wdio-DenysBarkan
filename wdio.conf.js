@@ -9,12 +9,13 @@ exports.config = {
 
     specs: [
         //'./test/specs/homepage.js',
-        //'./test/specs/smoke.js',
+        //'./test/specs/smoke.ts',
         //'./test/specs/registration.ts',
-        './test/specs/homeWork3.ts',
+        //'./test/specs/homeWork3.ts',
         //'./test/specs/mocha_hooks.js',
-        //'./test/specs/test.js',
+        //'./test/specs/homeWork4.ts',
         //'./test/specs/test.ts',
+        './test/specs/**/pObj.ts',
         //'./test/specs/**/*.js',
         //'./test/specs/**/*.ts'
     ],
