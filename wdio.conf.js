@@ -1,4 +1,4 @@
-//require('ts-node').register({ files: true });
+require('ts-node').register({ files: true });
 
 
 exports.config = {
@@ -11,7 +11,7 @@ exports.config = {
         //'./test/specs/homepage.js',
         //'./test/specs/smoke.js',
         //'./test/specs/registration.ts',
-        //'./test/specs/homeWork3.js',
+        './test/specs/homeWork3.ts',
         //'./test/specs/mocha_hooks.js',
         //'./test/specs/test.js',
         //'./test/specs/test.ts',

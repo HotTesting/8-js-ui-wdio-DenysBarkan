@@ -1,5 +1,5 @@
-const {assert} = require('chai');    // opened for .js
-//import {assert} from "chai";   // opened for .ts
+//const {assert} = require('chai');    // opened for .js
+import {assert} from "chai";   // opened for .ts
 
 describe('User Registration', function () {
     it('can register on website', function () {
