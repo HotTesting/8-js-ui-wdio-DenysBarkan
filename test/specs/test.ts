@@ -1,6 +1,6 @@
-const chai = require('chai');
-const expect = chai.expect;
-chai.should();
+import { should } from 'chai';
+should();
+
 describe("TS vs JS", function(){
     it("typeScript", function(){
         browser.url("http://google.com");

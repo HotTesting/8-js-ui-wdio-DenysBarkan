@@ -1,5 +1,4 @@
-//require('ts-node').register({ files: true });
-
+require('ts-node').register({ files: true });
 
 exports.config = {
 
@@ -8,15 +7,8 @@ exports.config = {
     path: '/',
 
     specs: [
-        //'./test/specs/homepage.js',
-        //'./test/specs/smoke.js',
-        //'./test/specs/registration.ts',
-        //'./test/specs/homeWork3.js',
-        //'./test/specs/mocha_hooks.js',
-        //'./test/specs/test.js',
-        //'./test/specs/test.ts',
-        //'./test/specs/**/*.js',
-        //'./test/specs/**/*.ts'
+        './test/specs/*.test.js',
+        './test/specs/*.test.ts'
     ],
 
     exclude: [
