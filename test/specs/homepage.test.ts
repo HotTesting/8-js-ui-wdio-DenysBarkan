@@ -1,16 +1,24 @@
-//const {assert} = require('chai');
-import {assert} from "chai";
+import { should } from 'chai';
+should();
+import { HomePage } from '../../pageObjects/HomePage.page';
 
 describe('HEADER', function () {
+    const homePage = new HomePage();
+
+    beforeEach(function(){
+        browser.setWindowSize(1600,900);
+    });
+    afterEach(function(){
+        browser.refresh();
+    })
 
     it('Title&FavIcon', function () {
-        browser.url(`/`);
-        browser.fullscreenWindow();
-        const title = browser.getTitle();
-        assert.equal(title, "Ducks Store | Online Store", "The Title is wrong");
-        const favIcon = $('link[href=\"/favicon.ico\"]');
-        assert.exists(favIcon, 'Favicon is not shown');
+        homePage.open();  
+        const title = homePage.getTitle();
+        title.should.be.equal("Ducks Store | Online Store", "The Title is wrong");
+        homePage.favIcon.isExisting().should.be.equal(true, 'Favicon is not shown');
     });
+
     it('Header', ()=>{
         const header = $('#header');
         const logoImg = header.$('img[src="http://ip-5236.sunline.net.ua:38015/images/logotype.png"]');
@@ -61,7 +69,7 @@ describe('HEADER', function () {
         assert.isTrue(cartImg.isDisplayed(),"Cart hasn't the image");
         assert.equal(cartTitle, "Shopping Cart", "The Title is not correct");
     });
-
+/*
     it("Site menu", ()=>{
         const topMenu = $('#site-menu');
         const srch = topMenu.$(' input[name="query"]');
@@ -120,5 +128,5 @@ describe('HEADER', function () {
         assert.equal(browser.getUrl(), 'http://ip-5236.sunline.net.ua:38015/reset_password', "Reset password page is not opened");
         browser.back();
     });
-
+*/
 });
