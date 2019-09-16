@@ -19,55 +19,47 @@ describe('HEADER', function () {
         homePage.favIcon.isExisting().should.be.equal(true, 'Favicon is not shown');
     });
 
-    it('Header', ()=>{
-        const header = $('#header');
-        const logoImg = header.$('img[src="http://ip-5236.sunline.net.ua:38015/images/logotype.png"]');
-        assert.isTrue(logoImg.isDisplayed(), "The Logo img is not shown");
-        const logoHref = header.$(' .logotype').getAttribute('href');
-        assert.equal(logoHref, 'http://ip-5236.sunline.net.ua:38015/', 'The logo link is not exist');
-        const logoTitle = header.$(' .logotype img').getAttribute('title');
-        console.log('the logo title we have got ', logoTitle);
-        assert.equal(logoTitle, 'Ducks Store', 'The logo title is wrong');
+    it('Header', function() {
+        homePage.open();
+        homePage.favIcon.isDisplayed().should.be.equal(true, "The FavIcon is not shown");
+        homePage.getLogoHref().should.be.equal('http://ip-5236.sunline.net.ua:38015/', 'The logo link is not exist');
+        homePage.getLogoTitle().should.be.equal('Ducks Store', 'The logo title is wrong');
+        homePage.changePref();
 
-        const changePref = header.$(' .change a');
-        changePref.click();
-        //browser.pause(2000);
 
-        //const regionForm = header.$('#region');
 
-        const regionalSettingsOverlay = $('form[name="region_form"]');
-        regionalSettingsOverlay.waitForDisplayed();
-        assert.isTrue(regionalSettingsOverlay.isDisplayed(), "The region change form is not displayed");
-        const countrySelect = regionalSettingsOverlay.$(' .select-wrapper select[name="country_code"]');
-        countrySelect.selectByVisibleText('Ukraine');
-        const currencySelect = regionalSettingsOverlay.$(' .select-wrapper select[name="currency_code"]');
-        currencySelect.selectByVisibleText('Euros');
-        //const provinceSelect = regionalSettingsOverlay.$('.select-wrapper select[name="zone_code"]');
-        const saveBtn = regionalSettingsOverlay.$('button[name="save"]');
-        //browser.pause(3000);
-        saveBtn.click();
+        // regionalSettingsOverlay.waitForDisplayed();
+        // assert.isTrue(regionalSettingsOverlay.isDisplayed(), "The region change form is not displayed");
+        // const countrySelect = regionalSettingsOverlay.$(' .select-wrapper select[name="country_code"]');
+        // countrySelect.selectByVisibleText('Ukraine');
+        // const currencySelect = regionalSettingsOverlay.$(' .select-wrapper select[name="currency_code"]');
+        // currencySelect.selectByVisibleText('Euros');
+        // //const provinceSelect = regionalSettingsOverlay.$('.select-wrapper select[name="zone_code"]');
+        // const saveBtn = regionalSettingsOverlay.$('button[name="save"]');
+        // //browser.pause(3000);
+        // saveBtn.click();
 
-        const langId = header.$(' .language').getText();
-        assert.equal(langId, 'English', 'The language is incorrect');
-        let currencyId = header.$(' .currency').getText();
-        assert.equal(currencyId, 'EUR', 'The currency is incorrect');
-        let countryId = header.$(' .country img').getAttribute('title');
-        assert.equal(countryId, 'Ukraine');
+        // const langId = header.$(' .language').getText();
+        // assert.equal(langId, 'English', 'The language is incorrect');
+        // let currencyId = header.$(' .currency').getText();
+        // assert.equal(currencyId, 'EUR', 'The currency is incorrect');
+        // let countryId = header.$(' .country img').getAttribute('title');
+        // assert.equal(countryId, 'Ukraine');
 
-        changePref.click();
-        countrySelect.selectByVisibleText('United States');
-        currencySelect.selectByVisibleText('US Dollars');
-        saveBtn.click();
-        currencyId = header.$(' .currency').getText();
-        countryId = header.$(' .country img').getAttribute('title');
-        assert.equal(currencyId, 'USD', 'The currency is incorrect');
-        assert.equal(countryId, 'United States');
+        // changePref.click();
+        // countrySelect.selectByVisibleText('United States');
+        // currencySelect.selectByVisibleText('US Dollars');
+        // saveBtn.click();
+        // currencyId = header.$(' .currency').getText();
+        // countryId = header.$(' .country img').getAttribute('title');
+        // assert.equal(currencyId, 'USD', 'The currency is incorrect');
+        // assert.equal(countryId, 'United States');
 
-        const cart = header.$('#cart');
-        const cartTitle = cart.$(' .title').getText();
-        const cartImg = cart.$(' .image');
-        assert.isTrue(cartImg.isDisplayed(),"Cart hasn't the image");
-        assert.equal(cartTitle, "Shopping Cart", "The Title is not correct");
+        // const cart = header.$('#cart');
+        // const cartTitle = cart.$(' .title').getText();
+        // const cartImg = cart.$(' .image');
+        // assert.isTrue(cartImg.isDisplayed(),"Cart hasn't the image");
+        // assert.equal(cartTitle, "Shopping Cart", "The Title is not correct");
     });
 /*
     it("Site menu", ()=>{

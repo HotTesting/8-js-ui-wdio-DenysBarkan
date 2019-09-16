@@ -1,28 +1,28 @@
-export class PageObj {
-    static get header() { return  $('#header'); }
-    static get logoImg() { return PageObj.header.$('img[src="http://ip-5236.sunline.net.ua:38015/images/logotype.png"]'); }
-    static get favIcon() { return $('link[href=\"/favicon.ico\"]'); }
+import { Header } from './components/header'
+export class HomePage extends Header{
 
-}
-export class HomePage {
-    
+    head = new Header();
 
-
-    
     open(){
-        browser.url('/');
-        PageObj.logoImg.waitForDisplayed();
+    browser.url('/');
+    // this.head.logoImg.waitForDisplayed();
+    this.logoImg.waitForDisplayed();
     }
 
     getTitle(){
         return browser.getTitle();
     }
 
+    getLogoHref(){
+        return this.header.$(' .logotype').getAttribute('href');
+    }
+
+    getLogoTitle(){
+        return this.header.$(' .logotype img').getAttribute('title');
+    }
+
+    changePref(){
+        this.header.$(' .change a').click();
+    }
+
 }
-
-export class Header {
-
-    public header: string = PageObj.header.$('hren').getText();
-
-}
-
