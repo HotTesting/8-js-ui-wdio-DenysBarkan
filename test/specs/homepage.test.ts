@@ -1,9 +1,13 @@
 import { should } from 'chai';
 should();
 import { HomePage } from '../../pageObjects/HomePage.page';
+import { Header } from '../../pageObjects/components/header';
+import { Region } from '../../pageObjects/components/regionList';
 
 describe('HEADER', function () {
     const homePage = new HomePage();
+    const header = new Header();
+    const regionPref = new Region();
 
     beforeEach(function(){
         browser.setWindowSize(1600,900);
@@ -16,50 +20,35 @@ describe('HEADER', function () {
         homePage.open();  
         const title = homePage.getTitle();
         title.should.be.equal("Ducks Store | Online Store", "The Title is wrong");
-        homePage.favIcon.isExisting().should.be.equal(true, 'Favicon is not shown');
+        header.favIcon.isExisting().should.be.equal(true, 'Favicon is not shown');
     });
 
     it('Header', function() {
         homePage.open();
-        homePage.favIcon.isDisplayed().should.be.equal(true, "The FavIcon is not shown");
-        homePage.getLogoHref().should.be.equal('http://ip-5236.sunline.net.ua:38015/', 'The logo link is not exist');
+        header.favIcon.isExisting().should.be.equal(true, "The FavIcon is not shown");
+        homePage.getLogoHref().should.to.include('ip-5236.sunline.net', 'The logo link is not exist');
         homePage.getLogoTitle().should.be.equal('Ducks Store', 'The logo title is wrong');
         homePage.changePref();
-
-
-
-        // regionalSettingsOverlay.waitForDisplayed();
-        // assert.isTrue(regionalSettingsOverlay.isDisplayed(), "The region change form is not displayed");
-        // const countrySelect = regionalSettingsOverlay.$(' .select-wrapper select[name="country_code"]');
-        // countrySelect.selectByVisibleText('Ukraine');
-        // const currencySelect = regionalSettingsOverlay.$(' .select-wrapper select[name="currency_code"]');
-        // currencySelect.selectByVisibleText('Euros');
-        // //const provinceSelect = regionalSettingsOverlay.$('.select-wrapper select[name="zone_code"]');
-        // const saveBtn = regionalSettingsOverlay.$('button[name="save"]');
-        // //browser.pause(3000);
-        // saveBtn.click();
-
-        // const langId = header.$(' .language').getText();
-        // assert.equal(langId, 'English', 'The language is incorrect');
-        // let currencyId = header.$(' .currency').getText();
-        // assert.equal(currencyId, 'EUR', 'The currency is incorrect');
-        // let countryId = header.$(' .country img').getAttribute('title');
-        // assert.equal(countryId, 'Ukraine');
-
-        // changePref.click();
-        // countrySelect.selectByVisibleText('United States');
-        // currencySelect.selectByVisibleText('US Dollars');
-        // saveBtn.click();
-        // currencyId = header.$(' .currency').getText();
-        // countryId = header.$(' .country img').getAttribute('title');
-        // assert.equal(currencyId, 'USD', 'The currency is incorrect');
-        // assert.equal(countryId, 'United States');
-
-        // const cart = header.$('#cart');
-        // const cartTitle = cart.$(' .title').getText();
-        // const cartImg = cart.$(' .image');
-        // assert.isTrue(cartImg.isDisplayed(),"Cart hasn't the image");
-        // assert.equal(cartTitle, "Shopping Cart", "The Title is not correct");
+        regionPref.regionSetOverlay.waitForDisplayed();
+        regionPref.regionSetOverlay.isDisplayed().should.be.true;
+        let country = 'Ukraine';
+        homePage.selectCountry(country);
+        let curren = 'Euros';
+        homePage.selectCurrency(curren);
+        regionPref.clickSaveBtn()
+        header.getSelectedLanguage().should.be.equal('English', 'The language is incorrect');
+        header.getSelectedCurrency().should.be.equal('EUR', 'The currency is incorrect');
+        header.getSelectedCountry().should.be.equal(country, 'The country selected incorrect');
+        homePage.changePref();
+        country = 'United States';
+        homePage.selectCountry(country);
+        curren = 'US Dollars';
+        homePage.selectCurrency(curren);
+        regionPref.clickSaveBtn();
+        header.getSelectedCurrency().should.be.equal('USD', 'The currency is incorrect');
+        header.getSelectedCountry().should.be.equal(country, 'The country selected incorrect');
+        header.getCartTitle().should.be.equal("Shopping Cart", "The Title is not correct");
+        header.getCartImg().should.be.true;
     });
 /*
     it("Site menu", ()=>{

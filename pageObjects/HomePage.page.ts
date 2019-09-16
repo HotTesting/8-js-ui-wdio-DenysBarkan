@@ -1,12 +1,14 @@
 import { Header } from './components/header'
-export class HomePage extends Header{
+import { Region } from './components/regionList';
+export class HomePage {
 
     head = new Header();
+    region = new Region();
+    
 
     open(){
     browser.url('/');
-    // this.head.logoImg.waitForDisplayed();
-    this.logoImg.waitForDisplayed();
+    this.head.logoImg.waitForDisplayed();
     }
 
     getTitle(){
@@ -14,15 +16,27 @@ export class HomePage extends Header{
     }
 
     getLogoHref(){
-        return this.header.$(' .logotype').getAttribute('href');
+        return this.head.header.$(' .logotype').getAttribute('href');
     }
 
     getLogoTitle(){
-        return this.header.$(' .logotype img').getAttribute('title');
+        return this.head.header.$(' .logotype img').getAttribute('title');
     }
 
     changePref(){
-        this.header.$(' .change a').click();
+        this.head.header.$(' .change a').click();
+
     }
+
+    selectCountry(con){
+        this.region.countryList.selectByVisibleText(con);
+    }
+
+    selectCurrency(cur){
+        this.region.currencyList.selectByVisibleText(cur);
+    }
+
+
+
 
 }
