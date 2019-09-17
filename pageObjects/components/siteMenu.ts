@@ -16,14 +16,20 @@ export class HeaderMenu {
         return this.topMenu.$(' .categories a');
     }
 
-    getSearchPlaceholder(){
-        return this.searchField.getAttribute("placeholder");
+    get manufacturesDropDown(){
+        return this.topMenu.$(" .manufacturers a");
     }
 
-    fillSearchField(somevalue){
-        this.searchField.click();
-        this.searchField.setValue(somevalue);
-        browser.keys("\uE007");
+    get customService(){
+        return this.topMenu.$(" .customer-service a");
+    }
+
+    get signInDropDown(){
+        return this.topMenu.$(" .account.dropdown");
+    }
+
+    getSearchPlaceholder(){
+        return this.searchField.getAttribute("placeholder");
     }
 
     getSearchResult(){
@@ -47,11 +53,41 @@ export class HeaderMenu {
         return this.categoriesDropDown.getText();
     }
 
-    // openCategoriesDropDown() {
-    //     this.categoriesDropDown.$(' .caret').click();
-    //     let catOpen = this.categoriesDropDown.getAttribute('aria-expanded');
-    //     return catOpen !== null;
-    // }
+    openCategoriesDropDown() {
+        this.categoriesDropDown.$(' .caret').click();
+        let catOpen = this.categoriesDropDown.getAttribute('aria-expanded');
+        return catOpen !== null;
+    }
+
+    getCategoriesDropDownList(){
+        return this.categoriesDropDown.$('.dropdown-menu');
+    }
+
+    getManufacturesDropDownTitle(){
+        return this.manufacturesDropDown.getText();
+    }
+
+    openManufacturesDropDown() {
+        this.manufacturesDropDown.$(' .caret').click();
+        let manOpen = this.manufacturesDropDown.getAttribute('aria-expanded');
+        return manOpen !== null;
+    }
+
+    getManufactureDropDownList(){
+        return this.categoriesDropDown.$('.dropdown-menu');
+    }
+
+    getCustomServiceTitle(){
+        return this.customService.getText();
+    }
+
+    getCustimServiceHref(){
+        return this.customService.getAttribute("href");
+    }
+
+    getSignInTitle(){
+        return this.signInDropDown.$(' a').getText();
+    }
 
 
 
