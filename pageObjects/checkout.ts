@@ -10,7 +10,7 @@ export class Checkout {
 
     open() {
         browser.url("/checkout");
-        browser.pause(3500);
+        $('.loader-wrapper .loader').waitForDisplayed(1000, true);
     }
 
     isNoItemsInCart(){

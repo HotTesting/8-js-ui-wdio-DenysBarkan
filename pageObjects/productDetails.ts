@@ -12,7 +12,11 @@ export class ProductDetails {
 
     addToCart(){
         $('button[name="add_cart_product"]').click();
-        browser.pause(3500);
+        let checkWasAdded = $('#cart .details .quantity').getText();
+        browser.waitUntil(() => {
+            return $('#cart .details .quantity').getText() !== '0'
+        }, 5000);
+        
     }
     
     getProductPrice() {
