@@ -1,29 +1,51 @@
-export class Registration {
+import { Registration } from "./components/userRegistration";
+
+export class CreateAccount {
+
+    registration = new Registration();
 
     open(){
         browser.url('/create_account');
-        this.registrationForm.waitForDisplayed();
+        this.registration.registrationForm.waitForDisplayed();
     }
 
-    createAccountBtn(){
-        this.registrationForm.$('button[name="create_account"]').click();
+    setFirstName(firstName){
+        this.registration.firstNameInput.click();
+        this.registration.firstNameInput.setValue(firstName);
+    }
+    setLastName(lastName){
+        this.registration.lastNameInput.click();
+        this.registration.lastNameInput.setValue(lastName);
     }
 
-    
-    get registrationForm() { return $('form[name="customer_form"]'); }
-    get firstNameInput() { return this.registrationForm.$('input[name="firstname"]');}
-    get lastNameInput() { return this.registrationForm.$('input[name="lastname"]'); }
-    get countrySelect() { return this.registrationForm.$('select[name="country_code"]'); }
-    get emailInput() { return this.registrationForm.$('input[name="email"]'); }
-    get phoneInput() { return this.registrationForm.$('input[name="phone"]'); }
-    get passwordInput() { return this.registrationForm.$('input[name="password"]'); }
-    get confirmPasswordInput() { return this.registrationForm.$('input[name="confirmed_password"]'); }
-
-    get successMessage() { return $('#notices .alert-success'); }
-
-    getSuccessMessageText(){
-        return this.successMessage.getText();
+    selectCountry(country){
+        this.registration.countrySelect.click();
+        this.registration.countrySelect.selectByVisibleText(country);
     }
+
+    generateEmail(){
+        const eMail = (`test${new Date().getTime() / 1000}@test.com`);
+        return eMail;
+    }
+
+    setEmail(mail){
+        // this.registration.emailInput.click();
+        this.registration.emailInput.setValue(mail);
+    }
+
+    setPhoneNumber(phone){
+        this.registration.phoneInput.click();
+        this.registration.phoneInput.setValue(phone);
+    }
+
+    setPassword(pass){
+        this.registration.passwordInput.click();
+        this.registration.passwordInput.setValue(pass);
+        this.registration.confirmPasswordInput.click();
+        this.registration.confirmPasswordInput.setValue(pass);
+    }
+
+
 
 
 }
