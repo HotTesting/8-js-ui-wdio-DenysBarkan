@@ -1,5 +1,5 @@
-import { ProductDetails } from "../../pageObjects/productDetails";
-import { Checkout } from "../../pageObjects/checkout";
+import { ProductDetails } from "../../pageObjects/components/productDetails";
+import { Checkout } from "../../pageObjects/components/checkout";
 import { expect } from 'chai';
 
 describe('Cart', function(){

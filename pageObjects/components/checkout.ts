@@ -10,7 +10,22 @@ export class Checkout {
 
     open() {
         browser.url("/checkout");
-        $('.loader-wrapper .loader').waitForDisplayed(1000, true);
+        $('.loader-wrapper .loader').waitForDisplayed(2000, true);
+    }
+
+    get itemsInCart() {
+        if($('.items.table.table-striped.table-hover.data-table .item').isDisplayed()) {
+            return $$('.items.table.table-striped.table-hover.data-table .item').length; 
+        } else { return +0};
+    }
+
+    get sameItemsInCart(){
+        let a = $('.items.table.table-striped.table-hover.data-table .item .form-control').getAttribute('value');
+        return +a;
+    }
+
+    get totalPrice() {
+        return parseFloat($('.subtotal .formatted-value').getText().slice(1));
     }
 
     isNoItemsInCart(){
@@ -24,6 +39,14 @@ export class Checkout {
     isItemsInCart(){
         return !this.isNoItemsInCart();
     }
+
+    deleteOneItemFromCart(){
+        if(this.itemsInCart > 0){
+            $('.item button[name="remove_cart_item"]').click();
+            $('.loader-wrapper .loader').waitForDisplayed(2000, true);
+            } else { return 'The Cart is Empty'}
+    } 
+    
 
    
 
@@ -56,6 +79,7 @@ class Item {
     }
     getProductPrice(){
         return parseFloat(this.container.getAttribute('data-price'));
+
     }
 
 }
