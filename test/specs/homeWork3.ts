@@ -6,23 +6,19 @@ describe("Items search", function() {
     it("should show results in case multiple items matches", function() {
         browser.url(`/`);
         browser.fullscreenWindow();
-
         const srch = $('#site-menu input[name="query"]');
         srch.setValue("Duck");
         browser.keys("\uE007");
         assert.include($("#content #box-search-results .title").getText(), "Duck", 'Search function is not working');
         browser.back();
-        //browser.pause(2000);
     });
 
     it("should redirect to item page in case only one result matches", function() {
-        //throw new Error("NOT IMPLEMENTED");
         const srch = $('#site-menu input[name="query"]');
         srch.setValue("Yellow");
         browser.keys("\uE007");
         assert.include($("#content #box-product").getAttribute('data-name'), "Yellow Duck", 'Search function is not working');
         browser.back();
-        //browser.pause(2000);
 
     });
 
@@ -41,49 +37,28 @@ describe("Search results sorting", function() {
     it("correctly arranges items when using 'by price' sorting", function() {
         browser.url(`/search?query=Duck`);
         const btnLine = $('#content .btn-group');
-        
-        // for (let i = 0 ; i < btnLine.length; i++){
-        //     let btnName = btnLine[i].getText();
-        //     if(btnName.includes('Price')){
-        //         btnLine[i].click();
-        //         //browser.pause(2000);
-        //     }
-        // }
         const priceBtn = btnLine.$('a[href*="sort=price"]'); //use the shorter locator, don't use the loop for
-        priceBtn.click();                                    // the functionality is the same as code on 44-48 lines
-        
+        priceBtn.click();                                    // the functionality is the same as code on 44-48 lines     
         const products = $$('#content .products .product');
         let newProd = [];
         for (let p = 0 ; p < products.length; p++){
             let pr = products[p].getAttribute('data-price');
             newProd.push(pr);
         }
-        //console.log('by price ', newProd);
         assert.isTrue(Math.min(...newProd) == newProd[0], "The first product is not a lowest price");
         assert.isTrue(Math.max(...newProd) == newProd[newProd.length-1], "The last product is not the expensive");
-
     });
 
     it("correctly arranges items when using 'by name' sorting", function() {
         browser.url(`/search?query=Duck`)
-        // const btnLine = $$('#content .btn-group a.btn');
-        // for (let i = 0 ; i < btnLine.length; i++){
-        //     let btnName = btnLine[i].getText();
-        //     if(btnName.includes('Name')){
-        //         btnLine[i].click();
-        //         //browser.pause(3000);
-        //     }
-        // }
         const btnLine = $('a[href*="sort=name"]');
-        btnLine.click();
-        
+        btnLine.click();        
         const products = $$('#content .products .product');
         let newProd = [];
         for (let p = 0 ; p < products.length; p++){
             let pr = products[p].getAttribute('data-name');
             newProd.push(pr);
         }
-
         assert.isTrue(newProd[0][0] < newProd[1][0], "the first item is not the first by alphabet");
         assert.isTrue(newProd[newProd.length-1][0] > newProd[newProd.length-2][0], "the last one item is not the last one");
     });
@@ -104,10 +79,8 @@ describe("Contact us form", function() {
         const textArea = contactUsForm.$('textarea[name="message"]');
         textArea.setValue("The testing message should be delivered onto the Customer Service office ");
         textArea.addValue(" Signature");
-        //browser.pause(2000);
         const sendBtn = contactUsForm.$('button[name="send"]');
         sendBtn.click();
-        //browser.pause(3000);
         const successAlert = $('#content #notices .alert-success');
         assert(successAlert.isDisplayed(), 'The alert of the message delivery should be shown');
         const successMessage = successAlert.getText();

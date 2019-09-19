@@ -4,6 +4,13 @@ export class ProductDetails {
     open(productPath){
         browser.url(productPath);
     }
+    
+    getProductPrice() {
+        if($('#box-product.box .price').isExisting()) {
+            return parseFloat($('#box-product.box .price').getText().slice(1))
+        } else { return parseFloat($('#box-product.box .campaign-price').getText().slice(1))
+    }
+    }
 
     addToCart(){
         $('button[name="add_cart_product"]').click();
@@ -12,13 +19,6 @@ export class ProductDetails {
             return +($('#cart .details .quantity').getText()) !== checkWasAdded;
         }, 5000);
         
-    }
-    
-    getProductPrice() {
-        if($('#box-product.box .price').isExisting()) {
-            return parseFloat($('#box-product.box .price').getText().slice(1))
-        } else { return parseFloat($('#box-product.box .campaign-price').getText().slice(1))
-    }
     }
     
     getProductName() {
@@ -32,7 +32,6 @@ export class ProductDetails {
     }
 
     selectSize(size){
-        // $('.select-wrapper select[name="options[Size]"]').click();
         $('select[name="options[Size]"]').addValue(size);
     }
 

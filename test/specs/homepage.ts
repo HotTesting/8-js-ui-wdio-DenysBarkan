@@ -47,15 +47,13 @@ describe('HEADER', function () {
         homePage.head.getCartImg().should.be.true;
     });
 
-    it.only("Site menu", function(){
+    it("Site menu", function(){
         homePage.open();
         homePage.topMenu.getSearchPlaceholder().should.be.equal("Search products …", 'Placeholder in the search field is not shown');
         homePage.fillSearchField('Some Value');
-        //console.log("1 search result : ", topMenu.getSearchResult());
         homePage.topMenu.getSearchResult().should.to.include('No matching results', 'Search function is not working');
         browser.back();
         homePage.fillSearchField("Duck");
-        //console.log("2 search result : ", topMenu.getSearchResult());
         homePage.topMenu.getSearchResult().should.to.include('Duck', 'Search function is not working');
         homePage.topMenu.getHomeBtnTitle().should.be.equal('Home', 'Home button doesnt have title');
         homePage.topMenu.getHomeBtnHref().should.to.include('ip-5236.sunline.net.ua:38015', 'Home btn href is wrong');

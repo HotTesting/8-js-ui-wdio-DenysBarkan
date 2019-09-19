@@ -1,5 +1,5 @@
 import { should } from 'chai';
-import { CreateAccount } from "../../pageObjects/AccountMenagment.page";
+import { CreateAccount } from "../../pageObjects/CreateAccount.page";
 should();
 
 describe('User Registration', function () {
@@ -11,26 +11,9 @@ describe('User Registration', function () {
         browser.setWindowSize(1600, 900);
     });
 
-    
-    it('can register on website', function () {
-        userRegistration.open();
-        userRegistration.registration.registrationForm.isDisplayed().should.be.true;       
-        userRegistration.registration.firstNameInput.setValue('TestFirstName');
-        userRegistration.registration.lastNameInput.setValue('TestLastName');    
-        userRegistration.registration.countrySelect.selectByVisibleText('Ukraine');  
-        const email = (`test${new Date().getTime() / 1000}@test.com`);
-        userRegistration.registration.emailInput.setValue(email);
-        userRegistration.registration.phoneInput.setValue('+380441111111');
-        userRegistration.registration.passwordInput.setValue(email);
-        userRegistration.registration.confirmPasswordInput.setValue(email);
-        userRegistration.registration.createAccountBtn.click();
-        userRegistration.registration.successMessage.isDisplayed().should.be.equal(true, 'User registered success message should be visible');
-        const messText = userRegistration.registration.getSuccessMessageText();
-        console.log(messText);
-        userRegistration.registration.getSuccessMessageText().should.include('Your customer account has been created.', 'User registered success message is invalid');
-    });
 
-    it('can register on website', function () {
+    // what way from these two its is better??  
+    it('can register on website (by functions)', function () {
         userRegistration.open()
         userRegistration.setFirstName('TestFirstName');
         userRegistration.setLastName('TestLastName');
@@ -39,32 +22,35 @@ describe('User Registration', function () {
         userRegistration.setEmail(eMail);
         userRegistration.setPhoneNumber('+380441111111');
         userRegistration.setPassword(eMail);
-        userRegistration.registration.createAccountBtn.click();
-        // userRegistration.registration.successMessage.isDisplayed().should.be.true;
-        userRegistration.registration.getSuccessMessageText().should.to.include('Your customer account has been created.', 'User registered success message is invalid');
-        // firstNameInput.setValue('TestFirstName');
+        userRegistration.createAccountBtn.click();
+        userRegistration.getSuccessMessageText().should.to.include('Your customer account has been created.', 'User registered success message is invalid');
+    });
 
-        // lastNameInput.setValue('TestLastName');
-        
-        // countrySelect.selectByVisibleText('Ukraine');
-        
-        // const email = (`test${new Date().getTime() / 1000}@test.com`);
-        // emailInput.setValue(email);
+    it('can register on website (automatically fill the form)', function () {
+        userRegistration.open()
+        userRegistration.fillTheForm();
+        userRegistration.getSuccessMessageText().should.to.include('Your customer account has been created.', 'User registered success message is invalid');
+ 
+    });
 
-        // phoneInput.setValue('+380441111111');
 
-        // passwordInput.setValue(email);
-        // const confirmPasswordInput = registrationForm.$('input[name="confirmed_password"]');
-        // confirmPasswordInput.setValue(email);
-
-        // const createAccountButton = registrationForm.$('button[name="create_account"]');
-        // createAccountButton.click();
-
-        // const successMessage = $('#notices .alert-success');
-        //assert(successMessage.isDisplayed(), 'User registered success message should be visible');
-
-        // const text = successMessage.getText();
-        // console.log('got message ', text);
-        //assert.include(text,'Your customer account has been created.', 'User registered success message is invalid');
+    
+    // use from PO the selectors only
+    it('can register on website', function () {
+        userRegistration.open();
+        userRegistration.registrationForm.isDisplayed().should.be.true;       
+        userRegistration.firstNameInput.setValue('TestFirstName');
+        userRegistration.lastNameInput.setValue('TestLastName');    
+        userRegistration.countrySelect.selectByVisibleText('Ukraine');  
+        const email = (`test${new Date().getTime() / 1000}@test.com`);
+        userRegistration.emailInput.setValue(email);
+        userRegistration.phoneInput.setValue('+380441111111');
+        userRegistration.passwordInput.setValue(email);
+        userRegistration.confirmPasswordInput.setValue(email);
+        userRegistration.createAccountBtn.click();
+        userRegistration.successMessage.isDisplayed().should.be.equal(true, 'User registered success message should be visible');
+        const messText = userRegistration.getSuccessMessageText();
+        console.log(messText);
+        userRegistration.getSuccessMessageText().should.include('Your customer account has been created.', 'User registered success message is invalid');
     });
 })

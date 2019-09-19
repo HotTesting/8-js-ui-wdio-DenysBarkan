@@ -1,6 +1,6 @@
 import { should } from 'chai';
 should();
-import { BuyItem } from '../../pageObjects/buyItem.page';
+import { BuyItem } from '../../pageObjects/apps/buyItem';
 
 
 describe("Order", function() {
@@ -21,6 +21,10 @@ describe("Order", function() {
         Buy.cart.open();
         Buy.cart.isItemsInCart().should.be.true;
         productPrice.should.to.be.equal(Buy.cart.shoppingCart.items[0].getProductPrice());
+        Buy.cart.customerDetails.fillInForm();
+        Buy.cart.customerDetails.saveCustomerDetails(); 
+        Buy.cart.customerDetails.confirmOrderBtn();
+        Buy.cart.customerDetails.confirmMessage.should.to.include('is successfully completed!');
     });
 
     it("is successful for discounted item", function() {
@@ -30,7 +34,10 @@ describe("Order", function() {
         Buy.cart.open();
         Buy.cart.isItemsInCart().should.be.true;
         productPrice.should.to.be.equal(Buy.cart.shoppingCart.items[0].getProductPrice());
-
+        Buy.cart.customerDetails.fillInForm();
+        Buy.cart.customerDetails.saveCustomerDetails(); 
+        Buy.cart.customerDetails.confirmOrderBtn();
+        Buy.cart.customerDetails.confirmMessage.should.to.include('is successfully completed!');
     });
 
     it("is successful for sold out item", function() {
@@ -41,6 +48,10 @@ describe("Order", function() {
         Buy.cart.open();
         Buy.cart.isItemsInCart().should.be.true;
         productPrice.should.to.be.equal(Buy.cart.shoppingCart.items[0].getProductPrice());
+        Buy.cart.customerDetails.fillInForm();
+        Buy.cart.customerDetails.saveCustomerDetails(); 
+        Buy.cart.customerDetails.confirmOrderBtn();
+        Buy.cart.customerDetails.confirmMessage.should.to.include('is successfully completed!');
     });
 
     it("is successful deleted from the cart", function() {
@@ -64,6 +75,10 @@ describe("Order", function() {
         Buy.cart.open();
         Buy.cart.isItemsInCart().should.be.true;
         (Buy.cart.sameItemsInCart >= 2).should.be.true;
+        Buy.cart.customerDetails.fillInForm();
+        Buy.cart.customerDetails.saveCustomerDetails(); 
+        Buy.cart.customerDetails.confirmOrderBtn();
+        Buy.cart.customerDetails.confirmMessage.should.to.include('is successfully completed!');
     });
 
     it("is successful for 2 different items in card", function() {
@@ -73,6 +88,10 @@ describe("Order", function() {
         Buy.product.addToCart();
         Buy.cart.open();
         (Buy.cart.itemsInCart >= 2).should.be.true;
+        Buy.cart.customerDetails.fillInForm();
+        Buy.cart.customerDetails.saveCustomerDetails(); 
+        Buy.cart.customerDetails.confirmOrderBtn();
+        Buy.cart.customerDetails.confirmMessage.should.to.include('is successfully completed!');
 
     });
 
@@ -90,5 +109,9 @@ describe("Order", function() {
         Buy.cart.open();
         const total = price1 + price2 + price3;
         Buy.cart.totalPrice.should.be.equal(total, "The total sum is not correct");
+        Buy.cart.customerDetails.fillInForm();
+        Buy.cart.customerDetails.saveCustomerDetails(); 
+        Buy.cart.customerDetails.confirmOrderBtn();
+        Buy.cart.customerDetails.confirmMessage.should.to.include('is successfully completed!');
     });
 });

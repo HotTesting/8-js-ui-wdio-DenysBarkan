@@ -1,5 +1,5 @@
-import { ProductDetails } from "./components/productDetails";
-import { Checkout } from "./components/checkout";
+import { ProductDetails } from "../productDetails.page";
+import { Checkout } from "../checkout.page";
 
 export class BuyItem {
     
@@ -9,7 +9,4 @@ export class BuyItem {
     open(productPath){
         browser.url(productPath);
     }
-
-
-
 }

@@ -1,5 +1,5 @@
-import { ProductDetails } from "../../pageObjects/components/productDetails";
-import { Checkout } from "../../pageObjects/components/checkout";
+import { ProductDetails } from "../../pageObjects/productDetails.page";
+import { Checkout } from "../../pageObjects/checkout.page";
 import { expect } from 'chai';
 
 describe('Cart', function(){
@@ -7,7 +7,7 @@ describe('Cart', function(){
         browser.maximizeWindow();
     });
 
-    it.skip('can be added item', function(){
+    it('can be added item', function(){
         const product = new ProductDetails();
         product.open('/rubber-ducks-c-1/red-duck-p-3');
         product.addToCart();
@@ -17,7 +17,7 @@ describe('Cart', function(){
         expect(checkout.isItemsInCart()).to.be.true;
     })
 
-    it.only('can be added correct item', function(){
+    it('can be added correct item', function(){
         const product = new ProductDetails();
         product.open('/rubber-ducks-c-1/red-duck-p-3');
         const productName = product.getProductName();

@@ -49,11 +49,4 @@ export class HomePage {
         return this.topMenu.signInDropDown.$(" a").getAttribute("aria-expanded");
     }
 
-
-
-
-
-
-
-
 }
