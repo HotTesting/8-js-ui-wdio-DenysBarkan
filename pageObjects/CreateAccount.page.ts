@@ -1,3 +1,5 @@
+import { ValidUkrCustomerModel } from '../dataModel/CustomerData'
+
 export class CreateAccount {
 
     get registrationForm() { return $('form[name="customer_form"]'); }
@@ -59,28 +61,30 @@ export class CreateAccount {
         this.confirmPasswordInput.setValue(pass);
     }
 
-    fillTheForm(){
-        this.setFirstName('TestFirstName');
-        this.setLastName('TestLastName');
-        this.selectCountry('Ukraine');
-        this.setEmail(this.generateEmail());
-        this.setPhoneNumber('+380441111111');
-        this.setPassword(this.generateEmail());
-        this.createAccountBtn.click();
-    }
+    // fillTheForm(){
+    //     this.setFirstName('TestFirstName');
+    //     this.setLastName('TestLastName');
+    //     this.selectCountry('Ukraine');
+    //     this.setEmail(this.generateEmail());
+    //     this.setPhoneNumber('+380441111111');
+    //     this.setPassword(this.generateEmail());
+    //     this.createAccountBtn.click();
+    // }
+
+
 
     
-    // fillInForm(CustomerData) {
-    //     this.setFirstName(this.customerData.firstName)
-    //     this.setLastName(this.customerData.lastName)
-    //     this.setAddress(this.customerData.address)
-    //     this.setZipCode(this.customerData.zipCode)
-    //     this.setCity(this.customerData.city)
-    //     this.setCountry(this.customerData.country)
-    //     this.setEmail(this.customerData.email)
-    //     this.setPhone(this.customerData.phone)
-    //     this.saveCustomerDetails()
-    // }
+    fillInForm(CustomerData) {
+        this.setFirstName(this.customerData.firstName)
+        this.setLastName(this.customerData.lastName)
+        this.setAddress(this.customerData.address)
+        this.setZipCode(this.customerData.zipCode)
+        this.setCity(this.customerData.city)
+        this.setCountry(this.customerData.country)
+        this.setEmail(this.customerData.email)
+        this.setPhone(this.customerData.phone)
+        this.saveCustomerDetails()
+    }
 
 
 }

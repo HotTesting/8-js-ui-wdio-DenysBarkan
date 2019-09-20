@@ -1,10 +1,8 @@
 import { Header } from './components/header'
-import { Region } from './components/regionList';
 import { HeaderMenu } from './components/siteMenu';
 export class HomePage {
 
     head = new Header();
-    region = new Region();
     topMenu = new HeaderMenu();
     
 
@@ -31,11 +29,11 @@ export class HomePage {
     }
 
     selectCountry(con){
-        this.region.countryList.selectByVisibleText(con);
+        this.head.countryList.selectByVisibleText(con);
     }
 
     selectCurrency(cur){
-        this.region.currencyList.selectByVisibleText(cur);
+        this.head.currencyList.selectByVisibleText(cur);
     }
 
     fillSearchField(somevalue){
