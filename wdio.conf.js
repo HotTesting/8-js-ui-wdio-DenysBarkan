@@ -7,8 +7,8 @@ exports.config = {
     path: '/',
 
     specs: [
-        './test/specs/*.test.js',
-        './test/specs/*.test.ts'
+        // './test/specs/*.test.js',
+        './test/specs/**.ts'
     ],
 
     exclude: [

@@ -1,4 +1,4 @@
-import { ValidUkrCustomerModel } from '../dataModel/CustomerData'
+import { UkrCustomerModel,USACustomerModel } from '../dataModel/CustomerData'
 
 export class CreateAccount {
 
@@ -61,29 +61,23 @@ export class CreateAccount {
         this.confirmPasswordInput.setValue(pass);
     }
 
-    // fillTheForm(){
-    //     this.setFirstName('TestFirstName');
-    //     this.setLastName('TestLastName');
-    //     this.selectCountry('Ukraine');
-    //     this.setEmail(this.generateEmail());
-    //     this.setPhoneNumber('+380441111111');
-    //     this.setPassword(this.generateEmail());
-    //     this.createAccountBtn.click();
-    // }
-
-
-
+        customerUA = new UkrCustomerModel();
+        customerUSA = new USACustomerModel();
+        customerData;
     
-    fillInForm(CustomerData) {
-        this.setFirstName(this.customerData.firstName)
-        this.setLastName(this.customerData.lastName)
-        this.setAddress(this.customerData.address)
-        this.setZipCode(this.customerData.zipCode)
-        this.setCity(this.customerData.city)
-        this.setCountry(this.customerData.country)
-        this.setEmail(this.customerData.email)
-        this.setPhone(this.customerData.phone)
-        this.saveCustomerDetails()
+    fillTheForm (atr){
+        if(atr == "ua"){
+        this.customerData = this.customerUA;
+    } else if(atr == 'usa'){ 
+        this.customerData = this.customerUSA;
+    }
+        this.setFirstName(this.customerData.firstName);
+        this.setLastName(this.customerData.lastName);
+        this.selectCountry(this.customerData.country);
+        this.setEmail(this.customerData.email);
+        this.setPhoneNumber(this.customerData.phone);
+        this.setPassword(this.customerData.password);
+        this.createAccountBtn.click();
     }
 
 

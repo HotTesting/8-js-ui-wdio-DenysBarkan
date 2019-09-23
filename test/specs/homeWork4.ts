@@ -23,8 +23,7 @@ describe("Order", function() {
         cart.open();
         cart.isItemsInCart().should.be.true;
         productPrice.should.to.be.equal(cart.shoppingCart.items[0].getProductPrice());
-        cart.customerDetails.fillInForm();
-        cart.customerDetails.saveCustomerDetails(); 
+        cart.customerDetails.fillInForm('ua');
         cart.customerDetails.confirmOrderBtn();
         cart.customerDetails.confirmMessage.should.to.include('is successfully completed!');
     });
@@ -36,8 +35,7 @@ describe("Order", function() {
         cart.open();
         cart.isItemsInCart().should.be.true;
         productPrice.should.to.be.equal(cart.shoppingCart.items[0].getProductPrice());
-        cart.customerDetails.fillInForm();
-        cart.customerDetails.saveCustomerDetails(); 
+        cart.customerDetails.fillInForm('usa');
         cart.customerDetails.confirmOrderBtn();
         cart.customerDetails.confirmMessage.should.to.include('is successfully completed!');
     });
@@ -50,8 +48,7 @@ describe("Order", function() {
         cart.open();
         cart.isItemsInCart().should.be.true;
         productPrice.should.to.be.equal(cart.shoppingCart.items[0].getProductPrice());
-        cart.customerDetails.fillInForm();
-        cart.customerDetails.saveCustomerDetails(); 
+        cart.customerDetails.fillInForm('ua');
         cart.customerDetails.confirmOrderBtn();
         cart.customerDetails.confirmMessage.should.to.include('is successfully completed!');
     });
@@ -77,8 +74,7 @@ describe("Order", function() {
         cart.open();
         cart.isItemsInCart().should.be.true;
         (cart.sameItemsInCart >= 2).should.be.true;
-        cart.customerDetails.fillInForm();
-        cart.customerDetails.saveCustomerDetails(); 
+        cart.customerDetails.fillInForm('usa');
         cart.customerDetails.confirmOrderBtn();
         cart.customerDetails.confirmMessage.should.to.include('is successfully completed!');
     });
@@ -91,7 +87,6 @@ describe("Order", function() {
         cart.open();
         (cart.itemsInCart >= 2).should.be.true;
         cart.customerDetails.fillInForm();
-        cart.customerDetails.saveCustomerDetails(); 
         cart.customerDetails.confirmOrderBtn();
         cart.customerDetails.confirmMessage.should.to.include('is successfully completed!');
 
@@ -112,7 +107,6 @@ describe("Order", function() {
         const total = price1 + price2 + price3;
         cart.totalPrice.should.be.equal(total, "The total sum is not correct");
         cart.customerDetails.fillInForm();
-        cart.customerDetails.saveCustomerDetails(); 
         cart.customerDetails.confirmOrderBtn();
         cart.customerDetails.confirmMessage.should.to.include('is successfully completed!');
     });

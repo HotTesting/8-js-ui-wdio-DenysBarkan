@@ -1,5 +1,6 @@
-//const {assert} = require('chai');
 import {assert} from "chai";
+import { should } from 'chai';
+should();
 
 describe("Items search", function() {
 

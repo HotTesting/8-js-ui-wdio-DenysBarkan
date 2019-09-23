@@ -1,4 +1,4 @@
-import { ValidUkrCustomerModel } from '../dataModel/CustomerData'
+import { UkrCustomerModel, USACustomerModel } from '../dataModel/CustomerData'
 
 export class Checkout {
 
@@ -166,25 +166,27 @@ class CustomerDetails {
         return $('#box-order-success .title').getText()
     }
 
-    cust = new ValidUkrCustomerModel();
+    customerUA = new UkrCustomerModel();
+    customerUSA = new USACustomerModel();
+    customerData;
 
-    fillInForm(){
-        this.setFirstName(this.cust.firstName)
-        this.setLastName(this.cust.lastName)
-        this.setAddress(this.cust.address1)
-        this.setZipCode(this.cust.zipCode)
-        this.setCity(this.cust.city)
-        this.setCountry(this.cust.country)
-        this.setEmail(this.cust.email)
-        this.setPhone(this.cust.phone)
-    }
-
-
-
-
-
-
-
+    fillInForm (atr){
+        if(atr == "ua"){
+            this.customerData = this.customerUA;
+        } else if(atr == 'usa'){ 
+            this.customerData = this.customerUSA;
+        } else { this.customerData = this.customerUA
+        };
+        this.setFirstName(this.customerData.firstName);
+        this.setLastName(this.customerData.lastName);
+        this.setAddress(this.customerData.address1);
+        this.setZipCode(this.customerData.zipCode);
+        this.setCity(this.customerData.city)
+        this.setCountry(this.customerData.country);
+        this.setEmail(this.customerData.email);
+        this.setPhone(this.customerData.phone);
+        this.saveCustomerDetails();
+}
 
 
 }
