@@ -40,11 +40,6 @@ export class CreateAccount {
         this.countrySelect.selectByVisibleText(country);
     }
 
-    generateEmail(){
-        const eMail = (`test${new Date().getTime() / 1000}@test.com`);
-        return eMail;
-    }
-
     setEmail(mail){
         this.emailInput.setValue(mail);
     }
@@ -68,9 +63,9 @@ export class CreateAccount {
     fillTheForm (atr){
         if(atr == "ua"){
         this.customerData = this.customerUA;
-    } else if(atr == 'usa'){ 
+            } else if(atr == 'usa'){
         this.customerData = this.customerUSA;
-    }
+            }
         this.setFirstName(this.customerData.firstName);
         this.setLastName(this.customerData.lastName);
         this.selectCountry(this.customerData.country);

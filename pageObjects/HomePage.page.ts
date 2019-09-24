@@ -1,5 +1,6 @@
 import { Header } from './components/header'
 import { HeaderMenu } from './components/siteMenu';
+
 export class HomePage {
 
     head = new Header();

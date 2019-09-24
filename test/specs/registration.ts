@@ -7,7 +7,7 @@ describe('User Registration', function () {
     
     beforeEach(function(){
         browser.reloadSession();
-        browser.deleteCookies()
+        browser.deleteCookies();
         browser.setWindowSize(1600, 900);
     });
 

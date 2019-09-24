@@ -1,16 +1,16 @@
 export class CustomerModel {
-    company: string
-    tax: string
-    firstName: string
-    lastName: string
-    address1: string
-    address2: string
-    city: string
-    zipCode: string
-    country: string
-    phone: string
-    email: string
-    password: string
+    company: string;
+    tax: string;
+    firstName: string;
+    lastName: string;
+    address1: string;
+    address2: string;
+    city: string;
+    zipCode: string;
+    country: string;
+    phone: string;
+    email: string;
+    password: string;
     // tData = `test${new Date().getTime() / 1000}`
     tData = `test${Date.now() / 1000}`
 }
@@ -20,7 +20,7 @@ export class UkrCustomerModel extends CustomerModel {
         super();
         const ttData = this.tData + "@test.ua.com";
         this.company = "myCompany";
-        this.tax = '444'
+        this.tax = '444';
         this.firstName = "TestFirstName";
         this.lastName = "TestLastName";
         this.address1 = "Lubaja 8";
@@ -39,7 +39,7 @@ export class USACustomerModel extends CustomerModel {
         super();
         const ttData = this.tData + "@test.usa.com";
         this.company = "myUSACompany";
-        this.tax = "13"
+        this.tax = "13";
         this.firstName = "John";
         this.lastName = "Miles";
         this.address1 = "Washington str";

@@ -2,8 +2,8 @@ import { UkrCustomerModel, USACustomerModel } from '../dataModel/CustomerData'
 
 export class Checkout {
 
-    shoppingCart
-    customerDetails
+    shoppingCart;
+    customerDetails;
 
     
     constructor() {
@@ -68,7 +68,7 @@ class ShoppingCart {
 
 
 class Item {
-    container
+    container;
 
     constructor(itemContainer){
         this.container = itemContainer
@@ -144,7 +144,7 @@ class CustomerDetails {
     }
 
     setEmail(email) {
-        this.emailInput.click()
+        this.emailInput.click();
         this.emailInput.addValue(email)
     }
 
@@ -157,8 +157,8 @@ class CustomerDetails {
         $('.loader-wrapper .loader').waitForDisplayed(3000, true);
     }
 
-    confirmOrderBtn() {     
-        $('button.btn-success').click()
+    confirmOrderBtn() {
+        $('button.btn-success').click();
         $('.loader-wrapper .loader').waitForDisplayed(3000, true);
     }
 
@@ -181,7 +181,7 @@ class CustomerDetails {
         this.setLastName(this.customerData.lastName);
         this.setAddress(this.customerData.address1);
         this.setZipCode(this.customerData.zipCode);
-        this.setCity(this.customerData.city)
+        this.setCity(this.customerData.city);
         this.setCountry(this.customerData.country);
         this.setEmail(this.customerData.email);
         this.setPhone(this.customerData.phone);

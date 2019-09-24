@@ -11,7 +11,7 @@ describe("Order", function() {
     });
     afterEach(function(){
         browser.takeScreenshot();
-    })
+    });
     
     const product = new ProductDetails();
     const cart = new Checkout();
