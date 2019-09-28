@@ -16,17 +16,17 @@ exports.config = {
         // 'path/to/excluded/files'
     ],
 
-    maxInstances: 10,
+    maxInstances: 2,
 
     capabilities: [{
 
-        maxInstances: 5,
+        maxInstances: 1,
 
         browserName: 'chrome',
 
     }],
 
-    logLevel: 'info',
+    logLevel: 'error',  // Level of logging verbosity: trace | debug | info | warn | error | silent
 
     bail: 0,
 
@@ -42,7 +42,14 @@ exports.config = {
 
     framework: 'mocha',
 
-    reporters: ['spec'],
+    reporters: [
+        'spec',
+        ['allure', {
+            outputDir: 'allure-results',
+            disableWebdriverStepsReporting: true,
+            disableWebdriverScreenshotsReporting: true,
+        }]
+    ],
 
     mochaOpts: {
         ui: 'bdd',

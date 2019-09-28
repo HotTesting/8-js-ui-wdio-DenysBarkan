@@ -1,5 +1,7 @@
 # Test results
 test_results/
+allure-results/
+allure-report/
 
 # Logs
 logs

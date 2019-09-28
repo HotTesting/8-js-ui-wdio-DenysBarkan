@@ -52,6 +52,7 @@ export class Checkout {
     } 
 }
 
+
 // Component
 class ShoppingCart {
     private get container(){
