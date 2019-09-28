@@ -4,7 +4,7 @@
   "description": "Demostration project for StartIT webdriverio functional automation group #8",
   "scripts": {
     "test": "wdio wdio.conf.js",
-    "reporter": "allure generate && allure open"
+    "reporter": "allure generate --clean && allure open"
   },
   "repository": {
     "type": "git",

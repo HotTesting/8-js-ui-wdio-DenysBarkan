@@ -70,6 +70,7 @@ export class CreateAccount {
         this.setLastName(this.customerData.lastName);
         this.selectCountry(this.customerData.country);
         this.setEmail(this.customerData.email);
+        console.log(this.customerData.email);
         this.setPhoneNumber(this.customerData.phone);
         this.setPassword(this.customerData.password);
         this.createAccountBtn.click();

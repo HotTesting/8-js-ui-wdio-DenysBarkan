@@ -8,7 +8,7 @@ exports.config = {
 
     specs: [
         // './test/specs/*.test.js',
-        './test/specs/**.ts'
+        './test/specs/registration.ts'
     ],
 
     exclude: [
@@ -16,11 +16,11 @@ exports.config = {
         // 'path/to/excluded/files'
     ],
 
-    maxInstances: 2,
+    maxInstances: 5,
 
     capabilities: [{
 
-        maxInstances: 1,
+        maxInstances: 2,
 
         browserName: 'chrome',
 
