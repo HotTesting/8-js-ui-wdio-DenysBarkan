@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Demostration project for StartIT webdriverio functional automation group #8",
   "scripts": {
-    "test": "wdio wdio.conf.js",
-    "reporter": "allure generate --clean && allure open"
+    "test": "rm -rf allure-report allure-results && wdio wdio.conf.js",
+    "reporter": "allure generate && allure open"
   },
   "repository": {
     "type": "git",
