@@ -20,20 +20,25 @@ Clone the repository of the project into your local drive or into the CI dock
 
 Before the first start install all components from the package.json file, by typing
 
-'npm install' command in the terminal from the project folder point.
+`'npm install'` 
+
+command in the terminal from the project folder point.
 
 To start the automated tests just type 
 
-'npm test'
+`'npm test'`
 
 For opening reporter in the browser (local only) type
 
-'npm run reporter'
+`'npm run reporter'`
 
 The main reporter of the project is using the Allure reporter. 
 
 That automated testing project was developed by Denys Barkan
-For all question text to denies.barkan@gmail.com
+
+For all question text to 
+
+denys.barkan@gmail.com
 
 Enjoy
 
