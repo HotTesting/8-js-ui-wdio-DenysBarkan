@@ -1,6 +1,4 @@
-# startit js ui automation course #8
-
-## Test Automation for the online store
+## Project of Test Automation for the online store
 
 The automated tests in this project work with a model of the online store.
 The tests are covered all of the most important functionality for the typical online store.
@@ -20,17 +18,17 @@ Clone the repository of the project into your local drive or into the CI dock
 
 Before the first start install all components from the package.json file, by typing
 
-`'npm install'` 
+`npm install` 
 
 command in the terminal from the project folder point.
 
 To start the automated tests just type 
 
-`'npm test'`
+`npm test`
 
 For opening reporter in the browser (local only) type
 
-`'npm run reporter'`
+`npm run reporter`
 
 The main reporter of the project is using the Allure reporter. 
 
